@@ -65,17 +65,16 @@
         function monitorLoader() {
             setTimeout(() => {
                 const contentEl = document.getElementById('app-content');
-                if (!contentEl) return;
+                if (!contentEl) window.app.router.navigate('404');
 
-                // ตรวจว่ามีคำว่า Loading... หรือไม่มีแท็ก <nav> ภายใน content
+                // ตรวจว่ามีคำว่า Loading...
                 const isLoading = contentEl.textContent.includes('Loading...');
-                const hasNav = contentEl.querySelector('nav') !== null;
 
-                if (isLoading || !hasNav) {
-                    console.warn('Content stuck or missing nav, redirect to 404');
+                if (isLoading) {
+                    console.warn('Content stuck, redirect to 404');
                     window.app.router.navigate('404');
                 }
-            }, 3000); // รอ 3 วิ
+            }, 300); // รอ 3 วิ
         }
         // เรียก monitor loader หลัง DOM พร้อม
         document.addEventListener('DOMContentLoaded', () => {
