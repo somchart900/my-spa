@@ -26,7 +26,7 @@
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <!-- Main Styles -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="/css/styles.css">
 
 </head>
 
@@ -75,7 +75,7 @@
                     document.title = `${pageTitle} - My SPA App`;
 
                     // Load page content
-                    const pagePath = `pages/${page}.html`;
+                    const pagePath = `/pages/${page}.html`;
 
                     fetch(pagePath)
                         .then(response => {
@@ -111,7 +111,7 @@
 
             loadComponents: function () {
                 // Load header
-                fetch('components/header.html')
+                fetch('/components/header.html')
                     .then(response => response.text())
                     .then(html => {
                         const headerEl = document.getElementById('navbar-header');
@@ -122,7 +122,7 @@
                     .catch(error => console.error('Error loading header:', error));
 
                 // Load footer
-                fetch('components/footer.html')
+                fetch('/components/footer.html')
                     .then(response => response.text())
                     .then(html => {
                         const footerEl = document.getElementById('footer-content');
