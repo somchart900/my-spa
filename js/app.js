@@ -23,7 +23,7 @@ window.app = {
             document.title = `${pageTitle} - My SPA App`;
 
             // Load page content
-            const pagePath = `/pages/${page}.html`;
+            const pagePath = `/my-spa/pages/${page}.html`;
 
             fetch(pagePath)
                 .then(response => {
@@ -49,17 +49,12 @@ window.app = {
             }
             return path.substring(1).split('/')[0];
         }
-        // getPageFromURL: function () {
-        //     let path = window.location.pathname;
-        //     if (path === '/' || path === '') return 'home';
-        //     path = path.replace(/^\/|\/$/g, ''); // เอา / ข้างหน้า/หลังออก
-        //     return path; // ส่ง 'fack/sss' แทน
-        // }
+
     },
 
     loadComponents: function () {
         // Load header
-        fetch('/components/header.html')
+        fetch('/my-spa/components/header.html')
             .then(response => response.text())
             .then(html => {
                 const headerEl = document.getElementById('navbar-header');
