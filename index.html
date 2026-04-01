@@ -52,27 +52,18 @@
     <!-- Application Scripts -->
     <script src="js/utils.js"></script>
     <script src="js/store.js"></script>
-    <script src="js/app.js"></script>
+    <!-- <script src="js/app.js"></script> -->
     <script src="js/auth.js"></script>
     <script src="js/api.js"></script>
 
-    <script>
-        function monitorLoader() {
-            setTimeout(() => {
-                const contentEl = document.getElementById('app-content');
-                if (!contentEl) return;
+    <script src="js/app.js" onerror="handleJsError()"></script>
 
-                // แปลง textContent เป็น string แล้วเช็คคำว่า Loading...
-                if (contentEl.textContent.includes('Loading...')) {
-                    console.warn('Content stuck, redirect to 404');
-                    window.app.router.navigate('404');
-                }
-            }, 300); // รอ 3 วิ
+    <script>
+        function handleJsError() {
+            console.error("ไม่สามารถโหลดไฟล์ app.js ได้ กำลังรีไดเรค...");
+            // กำหนด URL ที่คุณต้องการให้ไปเมื่อเกิด Error
+            window.location.href = "https://your-fallback-url.com/404";
         }
-        // เรียก monitor loader หลัง DOM พร้อม
-        document.addEventListener('DOMContentLoaded', () => {
-            monitorLoader();
-        });
     </script>
 </body>
 
