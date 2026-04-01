@@ -42,14 +42,19 @@ window.app = {
         },
 
         // // Get page from URL
+        // getPageFromURL: function () {
+        //     const path = window.location.pathname;
+        //     if (path === '/' || path === '') {
+        //         return 'home';
+        //     }
+        //     return path.substring(1).split('/')[0];
+        // }
         getPageFromURL: function () {
             const path = window.location.pathname;
-            if (path === '/' || path === '') {
-                return 'home';
-            }
-            return path.substring(1).split('/')[0];
+            if (path === '/' || path === '') return 'home';
+            // เอาทุก segment มาต่อด้วย "-"
+            return path.substring(1).replace(/\//g, '-');
         }
-
     },
 
     loadComponents: function () {
