@@ -156,11 +156,20 @@
             window.app.router.navigate(page, false);
 
         }
+
     </script>
-    <script src="/js/utils.js"></script>
-    <script src="/js/store.js"></script>
-    <script src="/js/auth.js"></script>
-    <script src="/js/api.js"></script>
+    <script>
+        // ฟังก์ชันต้องประกาศก่อน
+        window.handleScriptError = function () {
+            console.error('Failed to load essential script. Redirecting to home...');
+            window.location.href = '/home'; // รีไดเรคไปหน้า /home
+        };
+    </script>
+    <script src="/js/utils.js" onerror="handleScriptError()"></script>
+    <script src="/js/store.js" onerror="handleScriptError()"></script>
+    <script src="/js/auth.js" onerror="handleScriptError()"></script>
+    <script src="/js/api.js" onerror="handleScriptError()"></script>
+
 </body>
 
 </html>
