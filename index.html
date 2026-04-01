@@ -67,12 +67,15 @@
                 const contentEl = document.getElementById('app-content');
                 if (!contentEl) return;
 
-                // แปลง textContent เป็น string แล้วเช็คคำว่า Loading...
-                if (contentEl.textContent.includes('Loading...')) {
-                    console.warn('Content stuck, redirect to 404');
+                // ตรวจว่ามีคำว่า Loading... หรือไม่มีแท็ก <nav> ภายใน content
+                const isLoading = contentEl.textContent.includes('Loading...');
+                const hasNav = contentEl.querySelector('nav') !== null;
+
+                if (isLoading || !hasNav) {
+                    console.warn('Content stuck or missing nav, redirect to 404');
                     window.app.router.navigate('404');
                 }
-            }, 300); // รอ 3 วิ
+            }, 3000); // รอ 3 วิ
         }
         // เรียก monitor loader หลัง DOM พร้อม
         document.addEventListener('DOMContentLoaded', () => {
