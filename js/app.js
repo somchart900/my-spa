@@ -23,7 +23,7 @@ window.app = {
             document.title = `${pageTitle} - My SPA App`;
 
             // Load page content
-            const pagePath = `/my-spa/pages/${page}.html`;
+            const pagePath = `pages/${page}.html`;
 
             fetch(pagePath)
                 .then(response => {
@@ -54,7 +54,7 @@ window.app = {
 
     loadComponents: function () {
         // Load header
-        fetch('/my-spa/components/header.html')
+        fetch('components/header.html')
             .then(response => response.text())
             .then(html => {
                 const headerEl = document.getElementById('navbar-header');
@@ -65,7 +65,7 @@ window.app = {
             .catch(error => console.error('Error loading header:', error));
 
         // Load footer
-        fetch('/components/footer.html')
+        fetch('components/footer.html')
             .then(response => response.text())
             .then(html => {
                 const footerEl = document.getElementById('footer-content');
