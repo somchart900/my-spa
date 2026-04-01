@@ -65,12 +65,10 @@
         function monitorLoader() {
             setTimeout(() => {
                 const contentEl = document.getElementById('app-content');
-                if (!contentEl) window.app.router.navigate('404');
+                if (!contentEl) return;
 
-                // ตรวจว่ามีคำว่า Loading...
-                const isLoading = contentEl.textContent.includes('Loading...');
-
-                if (isLoading) {
+                // แปลง textContent เป็น string แล้วเช็คคำว่า Loading...
+                if (contentEl.textContent.includes('Loading...')) {
                     console.warn('Content stuck, redirect to 404');
                     window.app.router.navigate('404');
                 }
