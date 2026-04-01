@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# ถ้า request ไม่ใช่ไฟล์จริง
+RewriteCond %{REQUEST_FILENAME} !-f
+
+# และไม่ใช่โฟลเดอร์จริง
+RewriteCond %{REQUEST_FILENAME} !-d
+# exclude static folders
+# ให้ rewrite ไป index (หรือ /)
+RewriteRule ^ /404.html [L]
